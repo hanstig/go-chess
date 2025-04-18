@@ -26,7 +26,6 @@ func isDiagonalMove(m move) bool {
 	return abs(dx) == abs(dy) && dx != 0
 }
 
-
 func setPromotion(m move, p pieceType) move {
 	m.promotion = &p
 	return m
@@ -53,4 +52,3 @@ func isPathClear(g *game, m move) bool {
 
 	return true
 }
-

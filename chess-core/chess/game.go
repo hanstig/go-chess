@@ -98,9 +98,10 @@ func (g *game) legalMovesFrom(from square) []move {
 
 func moveToString(m move) string {
 	fx := string(byte('a' + m.from.x))
-	fy := strconv.Itoa(7 - 1 + m.from.y)
+	fy := strconv.Itoa(7 + 1 - m.from.y)
 	tx := string(byte('a' + m.to.x))
-	ty := strconv.Itoa(7 - 1 + m.to.y)
+	ty := strconv.Itoa(7 + 1 - m.to.y)
+
 	p := ""
 	if m.promotion != nil {
 		p = strings.ToLower(string(*m.promotion))

@@ -1,6 +1,9 @@
 package chess
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func NewGame() *game {
 	g, err := ParseFEN(defaultFen)
@@ -60,4 +63,25 @@ func (g *game) LegalMovesFrom(from string) ([]string, error) {
 
 func (g *game) GameOver() bool {
 	return !g.hasLegalMoves()
+}
+
+func (g *game) Print() {
+	b := &g.board
+
+	for y := range 8 {
+		for x := range 8 {
+			p := b[y][x]
+			if p == nil {
+				fmt.Print(".")
+			} else {
+				c := string(p.pieceType)
+				if p.color == black {
+					c = strings.ToLower(c)
+				}
+				fmt.Print(c)
+			}
+			fmt.Print(" ")
+		}
+		fmt.Println()
+	}
 }
